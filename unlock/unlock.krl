@@ -17,7 +17,7 @@ A test ruleset for Nick_Angell
     };
 	unlock = function(code) {
 	  (code == 1234) => "UNLOCKED" | "LOCKED"
-	}
+	};
   }
   
   rule unlock_door {
