@@ -33,7 +33,7 @@ ruleset track_trips {
 		}
 		{
 			send_directive("finding_long_trips") with
-				trip = (mileage > 50) => "Long" | "Short"
+				trip = (mileage > 50) => "Long: " + mileage | "Short: " + mileage
 		}
 		fired {
 			raise explicit event "found_long_trip"
