@@ -36,4 +36,12 @@ ruleset track_trips {
 				if (mileage > long_trip)
 		}
 	}
+	
+	rule process_long_trip {
+		select when explicit found_long_trip
+		{
+			send_directive("long_trip") with
+				longtrip = "It was a long trip"
+		}
+	}
 }
