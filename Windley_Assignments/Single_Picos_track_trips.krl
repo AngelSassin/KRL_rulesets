@@ -32,7 +32,7 @@ ruleset track_trips {
 			mileage = event:attr("mileage")
 		}
 		fired {
-			raise explicit event found_long_trip 
+			raise explicit event "found_long_trip"
 				if (mileage > long_trip)
 		}
 	}
