@@ -21,8 +21,8 @@ ruleset track_trips {
 				length = mileage
 		}
 		fired {
-			raise explicit event "trip_processed" with
-				attributes = event:attrs()
+			raise explicit event "trip_processed"
+				attributes event:attrs()
 		}
 	}
 	
