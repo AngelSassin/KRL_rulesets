@@ -6,6 +6,10 @@ ruleset track_trips {
 			>>
 		author "Nicholas Angell"
 	}
+	
+	global {
+		long_trip = 50
+	}
 
 	rule process_trip {
 		select when car new_trip
@@ -15,6 +19,21 @@ ruleset track_trips {
 		{
 			send_directive("trip") with
 				length = mileage
+		}
+		fired {
+			raise explicit event "trip_processed" with
+				attributes event:attrs()
+		}
+	}
+	
+	rule find_long_trips {
+		select when explicit trip_processed
+		pre {
+			mileage = event:attr("mileage")
+		}
+		fired {
+			raise explicit event found_long_trip 
+				if (mileage > long_trip)
 		}
 	}
 }
