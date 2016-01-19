@@ -2,7 +2,7 @@ ruleset track_trips {
 	meta {
 		name "track_trips"
 		description <<
-			Single Picos assignment: track_trips with long_trip
+			Single Picos assignment: track_trips
 			>>
 		author "Nicholas Angell"
 	}
@@ -37,11 +37,11 @@ ruleset track_trips {
 		}
 	}
 	
-	rule process_long_trip {
-		select when explicit found_long_trip
-		{
-			send_directive("long_trip") with
-				longtrip = "It was a long trip"
-		}
-	}
+//	rule process_long_trip {
+//		select when explicit found_long_trip
+//		{
+//			send_directive("long_trip") with
+//				longtrip = "It was a long trip"
+//		}
+//	}
 }
