@@ -2,7 +2,7 @@ ruleset track_trips {
 	meta {
 		name "track_trips"
 		description <<
-			Single Picos assignment: track_trips
+			Single Picos assignment: track_trips with long_trip
 			>>
 		author "Nicholas Angell"
 	}
@@ -22,7 +22,7 @@ ruleset track_trips {
 		}
 		fired {
 			raise explicit event "trip_processed" with
-				attributes event:attrs()
+				attributes = event:attrs()
 		}
 	}
 	
