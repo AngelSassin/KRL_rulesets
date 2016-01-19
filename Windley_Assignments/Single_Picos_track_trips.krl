@@ -31,9 +31,21 @@ ruleset track_trips {
 		pre {
 			mileage = event:attr("mileage")
 		}
+		{
+			send_directive("finding_long_trips") with
+				trip = (mileage > 50) => "Long: " + mileage | "Short: " + mileage
+		}
 		fired {
 			raise explicit event "found_long_trip"
 				if (mileage > long_trip)
+		}
+	}
+	
+	rule process_long_trip {
+		select when explicit found_long_trip
+		{
+			send_directive("long_trip") with
+				longtrip = "It was a long trip"
 		}
 	}
 }
