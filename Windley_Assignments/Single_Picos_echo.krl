@@ -1,4 +1,12 @@
 ruleset echo {
+	meta {
+		name "Hello World"
+		description <<
+			Single Picos assignment: echo hello/message
+			>>
+		author "Nicholas Angell"
+	}
+
 	rule hello {
 		select when echo hello
 		{
