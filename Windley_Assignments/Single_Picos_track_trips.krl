@@ -32,10 +32,13 @@ ruleset track_trips {
 		pre {
 			length = event:attr("mileage")
 		}
+		{
+			send_directive("trip_length") with
+				trip_length = length
+		}
 		fired {
 			raise explicit event "found_long_trip"
 				with mileage = length
-				and timestamp = event:attr("timestamp")
 				if (length > long_trip);
 		}
 	}
