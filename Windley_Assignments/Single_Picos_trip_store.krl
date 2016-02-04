@@ -29,7 +29,7 @@ ruleset trip_store {
 		select when explicit trip_processed
 		pre {
 			trip = {"length" : event:attr("mileage"),
-					"timestamp" : timestamp}
+					"timestamp" : event:attr("timestamp")}
 		}
 		always {
 			set ent:trips ent:trips.append(trip);
@@ -40,7 +40,7 @@ ruleset trip_store {
 		select when explicit found_long_trip
 		pre {
 			long_trip = {"length" : event:attr("mileage"),
-							"timestamp" : timestamp}
+							"timestamp" : event:attr("timestamp")}
 		}
 		always {
 			set ent:long_trips ent:long_trips.append(long_trip);
