@@ -42,6 +42,10 @@ ruleset trip_store {
 			long_trip = {"length" : event:attr("mileage"),
 						"timestamp" : event:attr("timestamp")}
 		}
+		{
+			send_directive("long_trip") with
+				leng = event:attr("mileage")
+		}
 		always {
 			set ent:long_trips ent:long_trips.append(long_trip);
 		}
