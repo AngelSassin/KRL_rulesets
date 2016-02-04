@@ -40,11 +40,11 @@ ruleset trip_store {
 		select when explicit found_long_trip
 		pre {
 			long_trip = {"length" : event:attr("mileage"),
-						"timestamp" : event:attr("timestamp")}
+						"timestamp" : event:attr("timestamp")};
 		}
 		{
 			send_directive("long_trip") with
-				leng = event:attr("mileage")
+				leng = "NYEH HEH HEH";
 		}
 		always {
 			set ent:long_trips ent:long_trips.append(long_trip);

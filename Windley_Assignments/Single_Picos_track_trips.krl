@@ -30,12 +30,12 @@ ruleset track_trips {
 	rule find_long_trips {
 		select when explicit trip_processed
 		pre {
-			mileage = event:attr("mileage")
+			length = event:attr("mileage")
 		}
 		fired {
 			raise explicit event "found_long_trip"
 				attributes event:attrs()
-				if (mileage > long_trip);
+				if (length > long_trip);
 		}
 	}
 }
