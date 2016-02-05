@@ -19,7 +19,8 @@ ruleset track_trips {
 		}
 		{
 			send_directive("trip") with
-				length = m
+				length = m and
+				timestamp = t;
 		}
 		fired {
 			raise explicit event "trip_processed"
