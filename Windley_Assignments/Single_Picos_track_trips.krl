@@ -14,16 +14,17 @@ ruleset track_trips {
 	rule process_trip {
 		select when car new_trip
 		pre {
-			mileage = event:attr("mileage");
-			
+			m = event:attr("mileage");
+			t = time:now();
 		}
 		{
 			send_directive("trip") with
-				length = mileage
+				length = m
 		}
 		fired {
 			raise explicit event "trip_processed"
-				attributes event:attrs()
+				with mileage = m
+				and timestamp = t;
 		}
 	}
 	
@@ -32,13 +33,9 @@ ruleset track_trips {
 		pre {
 			length = event:attr("mileage")
 		}
-		{
-			send_directive("trip_length") with
-				trip_length = length
-		}
 		fired {
 			raise explicit event "found_long_trip"
-				with mileage = length
+				attributes event:attrs()
 				if (length > long_trip);
 		}
 	}

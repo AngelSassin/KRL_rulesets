@@ -44,7 +44,7 @@ ruleset trip_store {
 		}
 		{
 			send_directive("long_trip") with
-				leng = "NYEH HEH HEH";
+				leng = event:attr("mileage");
 		}
 		always {
 			set ent:long_trips ent:long_trips.append(long_trip);
