@@ -18,7 +18,7 @@ ruleset trip_store {
 		};
 		short_trips = function() {
 			trips().filter(function(x) { // TEST: x is not in long_trips()
-				long_trips().none(function(y) {
+				long_trips().any(function(y) {
 					x{"timestamp"}.klog("x: ") == y{"timestamp"}.klog("y: ");
 				}).klog("x in long?: ");
 			}).klog("Short trips: ");
