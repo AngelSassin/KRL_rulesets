@@ -5,7 +5,7 @@ ruleset trip_store {
 			Single Picos assignment: trip_store
 			>>
 		author "Nicholas Angell"
-		provides trips, long_trips, short_trips
+		provides long_trips, short_trips
 		sharing on
 	}
 	
