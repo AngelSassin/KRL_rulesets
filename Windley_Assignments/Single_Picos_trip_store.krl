@@ -17,7 +17,7 @@ ruleset trip_store {
 			ent:long_trips;
 		};
 		short_trips = function() {
-			trips().difference(long_trips()); // TEST: x is not in long_trips()
+			trips().keys().difference(long_trips().keys()); // TEST: x is not in long_trips()
 		};
 	}
 	
