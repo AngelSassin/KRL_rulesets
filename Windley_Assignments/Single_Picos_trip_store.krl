@@ -17,9 +17,11 @@ ruleset trip_store {
 			ent:long_trips;
 		};
 		short_trips = function() {
-			Atrips = trips().klog("trips: ");
-			short_trips = (ent:trips.klog("trips: ")).difference((ent:long_trips.klog("long_trips: "))).klog("list of short trips: ");
-			short_trips;
+			trips().filter(function(x) { // TEST: x is not in long_trips()
+				long_trips().none(function(y) {
+					x{"timestamp"}.klog("x: ") == y{"timestamp"}.klog("y: ");
+				}).klog("x in long?: ");
+			}).klog("Short trips: ");
 		};
 	}
 	
