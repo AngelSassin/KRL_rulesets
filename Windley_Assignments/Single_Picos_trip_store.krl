@@ -19,10 +19,7 @@ ruleset trip_store {
 		short_trips = function() {
 			Atrips = trips().klog("trips: ");
 			short_trips = (ent:trips.klog("trips: ")).difference((ent:long_trips.klog("long_trips: "))).klog("list of short trips: ");
-			short_trips_return = Atrips.filter( function(k,v){
-				short_trips_keys.any(function(x){x.klog("x: ") eq k.klog("k: ")});
-			}).klog("filtered short_trips: ");
-			short_trips_return;
+			short_trips;
 		};
 	}
 	
