@@ -17,6 +17,7 @@ ruleset trip_store {
 			ent:long_trips;
 		};
 		short_trips = function() {
+			AllTrips = trips().klog("ALL TRIPS: ");
 			trips().filter(function(x) { // TEST: x is not in long_trips()
 				long_trips().any(function(y) {
 					(x{"timestamp"}.klog("x: ") eq y{"timestamp"}.klog("y: ")).klog("x eq y?: ");
