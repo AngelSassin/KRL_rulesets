@@ -6,7 +6,7 @@ ruleset trip_store {
 			>>
 		author "Nicholas Angell"
 		provides trips, long_trips, short_trips
-		sharing off
+		sharing on
 	}
 	
 	global {
