@@ -24,7 +24,7 @@ ruleset hello_world {
       last = all_users{[id, "name", "last"]}.defaultsTo("Name", "could not find user. ");
       name = first + " " + last;
       name;
-    }
+    };
   }
 
   
