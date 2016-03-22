@@ -24,29 +24,40 @@ ruleset hello_world {
   rule hello_world {
     select when echo hello
     pre {
-      name = event:attr("name").defaultsTo(ent:name, "no name passed in");
+      id = event:attr("id").defaultsTo("_0","no id passed.");
+      first = ent:name{[id,"name","first"]};
+      last = ent:name{[id,"name","last"]};
     } 
     {
       send_directive("say") with
-        greeting = "Hello #{name}";
+        greeting = "Hello #{first} #{last}";
     }
     always {
-      log("LOG says Hello " + name);
+      log("LOG says Hello " + first + " " + last);
     }
   }
 
 
   rule store_name {
-    select when hello name
     pre {
-      passed_name = event:attr("name").klog("Name passed in: ");
+      id = event:attr("id").klog("id passed in: ");
+      first = event:attr("first").klog("first passed in: ");
+      last = event:attr("last").klog("last passed in: ");
+      init = {"_0":{ "name":{
+                        "first":"Null",
+                        "last":"Name"} } }
     }
     {
       send_directive("store_name") with
-        name = passed_name;
+      passed_id = id and
+      passed_first = first and
+      passed_last = last;
     }
     always {
-      set ent:name passed_name;
+      set ent:name init if not ent:name{["_0"]}; // initialize if not created. 
+        // Table in data base must exist for sets of hash path to work.
+      set ent:name{[id,"name","first"]}  first;
+      set ent:name{[id, "name", "last"]}  last; 
     }
   }
 
