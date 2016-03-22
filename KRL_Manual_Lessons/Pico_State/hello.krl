@@ -5,7 +5,7 @@ ruleset hello_world {
     author "Nick Angell"
     logging on
     sharing on
-    provides hello
+    provides hello, greet
   }
 
 
