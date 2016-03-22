@@ -14,10 +14,6 @@ ruleset hello_world {
       msg = "Hello " + obj
       msg
     };
-    greet = function() {
-      msg = "Hello " + ent:name
-      msg
-    }
   }
 
   
@@ -39,6 +35,7 @@ ruleset hello_world {
 
 
   rule store_name {
+  select when hello name
     pre {
       id = event:attr("id").klog("id passed in: ");
       first = event:attr("first").klog("first passed in: ");
