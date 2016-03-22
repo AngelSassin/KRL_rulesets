@@ -32,14 +32,14 @@ ruleset hello_world {
     select when echo hello
     pre {
       id = event:attr("id").defaultsTo("_0", "No id given. ");
-      name = name(id);
+      default_name = name(id);
     } 
     {
       send_directive("say") with
-        greeting = "Hello #{name}";
+        greeting = "Hello #{default_name}";
     }
     always {
-      log("LOG says Hello " + name);
+      log("LOG says Hello " + default_name);
     }
   }
 
