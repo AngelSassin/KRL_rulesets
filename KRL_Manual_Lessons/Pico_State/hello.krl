@@ -39,6 +39,7 @@ ruleset hello_world {
         greeting = "Hello #{default_name}";
     }
     always {
+      set ent:name{[id, "visits"]} ent:name{[id, "visits"]} + 1;
       log("LOG says Hello " + default_name);
     }
   }
@@ -63,8 +64,8 @@ ruleset hello_world {
     always {
       set ent:name init if not ent:name{["_0"]}; // initialize if not created. 
         // Table in data base must exist for sets of hash path to work.
-      set ent:name{[id,"name","first"]}  first;
-      set ent:name{[id, "name", "last"]}  last; 
+      set ent:name{[id,"name","first"]} first;
+      set ent:name{[id, "name", "last"]} last; 
     }
   }
 
