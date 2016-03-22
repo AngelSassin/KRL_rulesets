@@ -31,7 +31,7 @@ ruleset hello_world {
   rule hello_world {
     select when echo hello
     pre {
-      id = event:attr("id");
+      id = event:attr("id").defaultsTo("_0", "No id given. ");
       name = name(id);
     } 
     {
