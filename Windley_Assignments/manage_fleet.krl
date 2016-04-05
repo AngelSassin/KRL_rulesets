@@ -44,7 +44,11 @@ ruleset manage_fleet {
 			name = event:attr("name");
 		}
 		{
-			noop();
+			noop(); // raise a wrangler child_deletion event with 
+					//  deletionTarget attribute set to the pico eci you want to delete.
+		}
+		always {
+			log("Deleted vehicle: " + name);
 		}
 	}
 
