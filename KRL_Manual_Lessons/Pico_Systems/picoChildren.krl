@@ -1,4 +1,12 @@
 ruleset picoChildren {
+
+  meta {
+    name "picoChildren"
+    description <<
+      Pico-Based Systems Lesson
+      >>
+    author "Nicholas Angell"
+  }
   
   rule createChildren {
     select when parent create_child
