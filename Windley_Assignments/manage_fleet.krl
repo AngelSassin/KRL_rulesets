@@ -6,15 +6,16 @@ ruleset manage_fleet {
       		Fleet Management Assignment
       		>>
     	author "Nicholas Angell"
+    	use module b507199x5 alias wranglerOS
     	sharing on
     	provides vehicles
   	}
 
 	global {
 		vehicles = function() {
-			results = wranglerOS:children();
-      		vehicles = results{"children"};
-      		vehicles;
+			results = wranglerOS:subscriptions();
+			subscriptions = results{"subscriptions"};
+			subscriptions;
 		}
 	}
 	
