@@ -27,13 +27,10 @@ ruleset manage_fleet {
 	rule delete_vehicle {
 		select when car unneeded_vehicle
 		pre {
-			name = 
+			name = event:attr("name");
 		}
 		{
 			noop();
-		}
-		always {
-
 		}
 	}
 

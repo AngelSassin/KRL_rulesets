@@ -32,9 +32,6 @@ ruleset picoChildren {
     {
       noop();
     }
-    always {
-   
-    }
   }
 
 
