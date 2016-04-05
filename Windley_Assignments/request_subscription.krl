@@ -14,7 +14,7 @@ ruleset request_subscription {
     	pre {
        		parent_results = wrangler_api:parent();
        		parent = parent_results{'parent'};
-       		parent_eci = parent[0]; // eci is the first element in tuple 
+       		parent_eci = parent[0];
        		attrs = {}.put(["name"],event:attr("name"))
                       .put(["name_space"],"Fleet_Management")
                       .put(["my_role"],"vehicle")
