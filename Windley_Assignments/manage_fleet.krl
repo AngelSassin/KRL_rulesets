@@ -6,6 +6,8 @@ ruleset manage_fleet {
       		Fleet Management Assignment
       		>>
     	author "Nicholas Angell"
+    	sharing on
+    	provides vehicles
   	}
 
 	global {
@@ -21,8 +23,9 @@ ruleset manage_fleet {
 		pre {
 			child_name = event:attr("name");
      		attributeList = {}
-          		.put(["Prototype_rids"],"b507707x4.prod;b507707x3.prod;b507707x8.prod") // rulesets needed at install, semicolon separated
-          		.put(["name"],child_name) // name for child
+          		.put(["Prototype_rids"],"b507707x4.prod;b507707x3.prod;b507707x8.prod")
+          			// RIDs in order: trip_store, track_trips, and request_subscription
+          		.put(["name"],child_name)
           		;
     	}
     	{	
@@ -30,7 +33,7 @@ ruleset manage_fleet {
       		with attrs = attributeList.klog("attributes: "); // needs a name attribute for child
     	}
     	always {
-      		log("create child for " + child);
+      		log("create child for " + child_name);
     	}
 	}
 
