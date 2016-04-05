@@ -28,7 +28,7 @@ ruleset manage_fleet {
     	}
     	{	
       		event:send({"cid":meta:eci()}, "wrangler", "child_creation")  // wrangler os event.
-      		with attrs = attributes.klog("attributes: "); // needs a name attribute for child
+      		with attrs = attributeList.klog("attributes: "); // needs a name attribute for child
     	}
     	always {
     		raise explicit event 'subscribeToParent'
