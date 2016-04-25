@@ -11,8 +11,8 @@ ruleset sample {
 		do_thing = function() {
 			6;
 		}
-		do_other_thing = function(x) {
-			x + 5;
+		do_other_thing = function() {
+			5;
 		}
 	}
 
@@ -23,9 +23,6 @@ ruleset sample {
 		}
 		{
 			noop();
-		}
-		always {
-
 		}
 	}
 }
