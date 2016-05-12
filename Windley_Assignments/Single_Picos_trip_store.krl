@@ -20,8 +20,8 @@ ruleset trip_store {
 			AllTrips = trips().klog("ALL TRIPS: ");
 			trips().filter(function(x) { // TEST: x is not in long_trips()
 				long_trips().none(function(y) {
-					(x{"timestamp"}.klog("x: ") eq y{"timestamp"}.klog("y: ")).klog("x eq y?: ");
-				}).klog("x in long?: ");
+					x{"timestamp"} eq y{"timestamp"};
+				});
 			}).klog("Short trips: ");
 		};
 	}
