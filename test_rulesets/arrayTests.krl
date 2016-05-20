@@ -21,7 +21,7 @@ ruleset arrayTests {
 		select when test splitTest
 		pre {
 			testString = "a,b,c;d,e;f;g,h;i,j";
-			testSplit = testString.split("re/[,;]+/").klog("Split String");
+			testSplit = testString.split(re/[,;]+/).klog("Split String");
 			testSplit7 = testSplit[7];
 		}
 		{
