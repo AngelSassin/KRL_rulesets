@@ -18,6 +18,7 @@ ruleset arrayTests {
 	}
 
 	rule splitTest {
+		select when test split
 		pre {
 			testString = "a,b,c;d,e;f;g,h;i,j";
 			testSplit = testString.split("re/,;/");
