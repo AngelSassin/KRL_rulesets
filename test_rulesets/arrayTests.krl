@@ -24,7 +24,8 @@ ruleset arrayTests {
 			testSplit = testString.split("re/,;/");
 		}
 		{
-			noop();
+			send_directive("Split")
+				with text = testSplit;
 		}
 		always {
 			log("Done with #{testSplit}");
