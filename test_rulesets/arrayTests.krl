@@ -18,7 +18,7 @@ ruleset arrayTests {
 	}
 
 	rule splitTest {
-		select when test split
+		select when test splitTest
 		pre {
 			testString = "a,b,c;d,e;f;g,h;i,j";
 			testSplit = testString.split("re/,;/");
@@ -26,9 +26,6 @@ ruleset arrayTests {
 		{
 			send_directive("Split")
 				with text = testSplit;
-		}
-		always {
-			log("Done with #{testSplit}");
 		}
 	}
 
