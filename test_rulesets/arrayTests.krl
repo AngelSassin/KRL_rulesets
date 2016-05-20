@@ -21,11 +21,11 @@ ruleset arrayTests {
 		select when test splitTest
 		pre {
 			testString = "a,b,c;d,e;f;g,h;i,j";
-			testSplit = testString.split("re/,/");
+			testSplit = testString.split("re/;/");
 		}
 		{
 			send_directive("Split")
-				with text = testSplit;
+				with text = "#{testString}";
 		}
 	}
 
