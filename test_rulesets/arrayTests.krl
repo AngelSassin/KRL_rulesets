@@ -25,7 +25,7 @@ ruleset arrayTests {
 		}
 		{
 			send_directive("Split")
-				with text = "#{testString}";
+				with text = "#{testSplit}";
 		}
 	}
 
