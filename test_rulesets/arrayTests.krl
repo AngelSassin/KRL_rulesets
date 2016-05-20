@@ -17,4 +17,17 @@ ruleset arrayTests {
 		}
 	}
 
+	rule splitTest {
+		pre {
+			testString = "a,b,c;d,e;f;g,h;i,j";
+			testSplit = testString.split("re/,;/");
+		}
+		{
+			noop();
+		}
+		always {
+			log("Done with #{testSplit}");
+		}
+	}
+
 }
