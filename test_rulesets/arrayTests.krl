@@ -31,21 +31,19 @@ ruleset arrayTests {
 			send_directive("pci bootstraps updated.")
 			with rulesets = list_bootstrap(appECI); // is this working?
 		}
-		removeBS = defaction(appECI){//,bootstrapRids){
+		removeBS = function(appECI){//,bootstrapRids){
 			boots = list_bootstrap(appECI);
 			boot = boots.map(function(rid) { 
 				pci:remove_bootstrap(appECI, rid); 
 				}).klog(">>>>>> bootstrap removed result >>>>>>>");
-			send_directive("pci bootstraps removed.")
-			with rulesets = list_bootstrap(appECI); 
+			boots;
 		}
-		removeCB = defaction(appECI){//,PCIcallbacks){
+		removeCB = function(appECI){//,PCIcallbacks){
 			calls = list_callback(appECI);
 			boot = calls.map(function(url) { 
 				pci:remove_callback(appECI, url); 
 				}).klog(">>>>>> callback remove result >>>>>>>");
-			send_directive("pci callback removed.")
-			with rulesets = list_callback(appECI);
+			calls;
 		}
 		update_app = defaction(app_eci,app_data,bootstrap_rids){
 			remove_appinfo = pci:remove_appinfo(app_eci);
