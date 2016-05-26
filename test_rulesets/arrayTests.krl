@@ -5,7 +5,7 @@ ruleset arrayTests {
 		Testing arrays
 		>>
 		author "Nicholas Angell"
-		provides testIndex
+		provides testIndex, list_bootstrap, get_appinfo, list_callback
 		sharing on
 	}
 
