@@ -15,6 +15,13 @@ ruleset arrayTests {
 			x = c.index(i);
 			x;
 		}
+		addPCIbootstraps = defaction(appECI,bootstrapRids){
+			boot = bootstrapRids.map(function(rid) { 
+				pci:add_bootstrap(appECI, rid); 
+				}).klog(">>>>>> bootstrap add result >>>>>>>");
+			send_directive("pci bootstraps updated.")
+			with rulesets = list_bootstrap(appECI); // is this working?
+		}
 		removePCIbootstraps = defaction(appECI){//,bootstrapRids){
 			boot = list_bootstrap().map(function(rid) { 
 				pci:remove_bootstrap(appECI, rid); 
