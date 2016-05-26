@@ -74,7 +74,7 @@ ruleset arrayTests {
 				"app_callback_url": "y".split(re/;/),
 				"app_declined_url": "u"
 			};
-			identifier = "24A64F0A-1ED5-11E6-9716-94D6E71C24E1"
+			identifier = "24A64F0A-1ED5-11E6-9716-94D6E71C24E1";
 			old_apps = pci:list_apps(meta:eci());
 			old_app = old_apps{identifier}.defaultsTo("error", standardOut("oldApp not found")).klog(">>>>>> old_app >>>>>>>");
 			app_data = (app_data_attrs)// keep app secrets for update// need to see what the real varibles are named........
