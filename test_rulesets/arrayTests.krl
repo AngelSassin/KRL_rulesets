@@ -72,15 +72,11 @@ ruleset arrayTests {
 				"app_description": "r",
 				"app_image_url": "t",
 				"app_callback_url": "y".split(re/;/),
-				"app_declined_url": "u"
+				"app_declined_url": "u",
+				"appSecret": "rAN5qd+AMvg0FFr7GFKYJuT6r4yylque1Q9x6PLjVU0"
 			};
 			identifier = "24A64F0A-1ED5-11E6-9716-94D6E71C24E1";
-			old_apps = pci:list_apps(meta:eci());
-			old_app = old_apps{identifier}.defaultsTo("error", standardOut("oldApp not found")).klog(">>>>>> old_app >>>>>>>");
-			app_data = (app_data_attrs)// keep app secrets for update// need to see what the real varibles are named........
-			.put(["appSecret"], old_app{["app_info", "developer_secret"]}.defaultsTo("error", standardOut("no secret found")))
-			.put(["appECI"], old_app{"appECI"}) // appECI does not exist in old_app
-			;
+			app_data = (app_data_attrs);// keep app secrets for update// need to see what the real varibles are named........
 			bootstrap_rids = app_data{"bootstrap_rids"}.split(re/;/).klog(">>>>>> bootstrap in >>>>>>>");
 		}
 		{
