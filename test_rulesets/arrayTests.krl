@@ -31,28 +31,24 @@ ruleset arrayTests {
 			send_directive("pci bootstraps updated.")
 			with rulesets = list_bootstrap(appECI); // is this working?
 		}
-		removePCIbootstraps = defaction(appECI){//,bootstrapRids){
-			boot = list_bootstrap().map(function(rid) { 
+		removeBS = defaction(appECI){//,bootstrapRids){
+			boots = list_bootstrap(appECI);
+			boot = boots.map(function(rid) { 
 				pci:remove_bootstrap(appECI, rid); 
 				}).klog(">>>>>> bootstrap removed result >>>>>>>");
 			send_directive("pci bootstraps removed.")
 			with rulesets = list_bootstrap(appECI); 
 		}
-		removePCIcallback = defaction(appECI){//,PCIcallbacks){
-			//PCIcallbacks =( PCIcallbacks || []).append(PCIcallbacks);
-			boot = list_callback().map(function(url) { 
+		removeCB = defaction(appECI){//,PCIcallbacks){
+			calls = list_callback(appECI);
+			boot = calls.map(function(url) { 
 				pci:remove_callback(appECI, url); 
 				}).klog(">>>>>> callback remove result >>>>>>>");
 			send_directive("pci callback removed.")
 			with rulesets = list_callback(appECI);
 		}
 		update_app = defaction(app_eci,app_data,bootstrap_rids){
-			//remove all 
-			remove_cb = removePCIcallback(app_eci);
 			remove_appinfo = pci:remove_appinfo(app_eci);
-			remove_bs = removePCIbootstraps(app_eci);
-			// add new 
-			add_callback = pci:add_callback(app_eci, app_data{"app_callback_url"}); 
 			add_info = pci:add_appinfo(app_eci,{
 				"icon": app_data{"app_image_url"},
 				"name": app_data{"app_name"},
@@ -61,6 +57,9 @@ ruleset arrayTests {
 				"declined_url": app_data{"app_declined_url"},
 				"developer_secret": app_data{"appSecret"}
 				});
+			remove_bs = removeBS(app_eci);
+			remove_cb = removeCB(app_eci);
+			add_callback = pci:add_callback(app_eci, app_data{"app_callback_url"}); 
 			addPCIbootstraps(app_eci,bootstrap_rids);
 		};
 	}
