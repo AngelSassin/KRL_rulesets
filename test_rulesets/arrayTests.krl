@@ -15,6 +15,15 @@ ruleset arrayTests {
 			x = c.index(i);
 			x;
 		}
+		list_bootstrap = function(appECI){
+			pci:list_bootstrap(appECI);
+		}
+		get_appinfo = function(appECI){
+			pci:get_appinfo(appECI);
+		}
+		list_callback = function(appECI){
+			pci:list_callback(appECI);
+		}
 		addPCIbootstraps = defaction(appECI,bootstrapRids){
 			boot = bootstrapRids.map(function(rid) { 
 				pci:add_bootstrap(appECI, rid); 
