@@ -32,14 +32,14 @@ ruleset arrayTests {
 			with rulesets = list_bootstrap(appECI); // is this working?
 		}
 		removeBS = function(appECI){//,bootstrapRids){
-			boots = list_bootstrap(appECI);
+			boots = pci:list_bootstrap(appECI) || [];
 			boot = boots.map(function(rid) { 
 				pci:remove_bootstrap(appECI, rid); 
 				}).klog(">>>>>> bootstrap removed result >>>>>>>");
 			boots;
 		}
 		removeCB = function(appECI){//,PCIcallbacks){
-			calls = list_callback(appECI);
+			calls = pci:list_callback(appECI) || [];
 			boot = calls.map(function(url) { 
 				pci:remove_callback(appECI, url); 
 				}).klog(">>>>>> callback remove result >>>>>>>");
