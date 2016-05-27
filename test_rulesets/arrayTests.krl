@@ -10,11 +10,17 @@ ruleset arrayTests {
 	}
 
 	global {
+
+		// ORIGINAL ARRAY TEST //
+
 		testIndex = function(i) {
 			c = [1, 2, 3, 4, 5];
 			x = c.index(i);
 			x;
 		}
+
+		// FOR UpdateClient //
+
 		list_bootstrap = function(appECI){
 			pci:list_bootstrap(appECI);
 		}
@@ -60,7 +66,18 @@ ruleset arrayTests {
 			add_callback = pci:add_callback(app_eci, app_data{"app_callback_url"}); 
 			addPCIbootstraps(app_eci,bootstrap_rids);
 		};
+
+		//////////
+
+
 	}
+
+	///////////
+	// RULES //
+	///////////
+
+
+	// Array Split Test //
 
 	rule splitTest {
 		select when test splitTest
@@ -74,6 +91,8 @@ ruleset arrayTests {
 			with text = "#{testSplit7}";
 		}
 	}
+
+	// Testing UpdateClient
 
 	rule updateClient {
 		select when test updateClient
