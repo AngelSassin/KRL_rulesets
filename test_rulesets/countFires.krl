@@ -19,7 +19,8 @@ ruleset countFires {
 			c = ent:count + 1;
 		}
 		{
-			noop();
+			send_directive("night_fire detected")
+				with count = c;
 		}
 		fired {
 			set ent:count c;
@@ -30,9 +31,11 @@ ruleset countFires {
 		select when begin scheduling
 		pre {
 			do_main = "do_main";
+			c = ent:count;
 		}
 		{
-			noop();
+			send_directive("night_fire scheduled")
+				with count = c;
 		}
 		fired {
 			schedule do_main event night_fire repeat "0 * * * *";
