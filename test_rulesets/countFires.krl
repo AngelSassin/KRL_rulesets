@@ -4,12 +4,18 @@ ruleset countFires {
 		description << Count times a rule fires >>
 		author "Nicholas Angell"
 		sharing on
-		provides getCount
+		provides getCount, cancelSchedule
 	}
 
 	global {
 		getCount = function() {
 			ent:count;
+		}
+		cancelSchedule = function(id) {
+			event:delete(id);
+		}
+		getScheduled = function() {
+			event:get_list();
 		}
 	}
 
@@ -39,6 +45,21 @@ ruleset countFires {
 		}
 		fired {
 			schedule do_main event night_fire repeat "0 * * * *";
+		}
+	}
+
+	rule cancelSchedule {
+		select when cancel scheduling
+		pre {
+			id = event:attr("id");
+		}
+		{
+			send_directive("canceled Schedule")
+				with eventID = id;
+			cancelSchedule(id);
+		}
+		fired {
+			log("Cancelled Scheduled Event");
 		}
 	}
 }
