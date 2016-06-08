@@ -4,7 +4,7 @@ ruleset countFires {
 		description << Count times a rule fires >>
 		author "Nicholas Angell"
 		sharing on
-		provides getCount, cancelSchedule
+		provides getCount, cancelSchedule, getScheduled
 	}
 
 	global {
