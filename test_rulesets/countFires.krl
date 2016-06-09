@@ -23,6 +23,15 @@ ruleset countFires {
 		getScheduledEvents = function() {
 			event:get_list();
 		}
+		getHistory = function(id) {
+			event:get_history(id);
+		}
+		getAllHistory = function() {
+			allEvents = event:get_list();
+			allEvents.map(function(ev) {
+				event:get_history(ev[0]);
+			});
+		}
 	}
 
 	rule count {
