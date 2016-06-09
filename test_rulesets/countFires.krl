@@ -54,6 +54,40 @@ ruleset countFires {
 		}
 	}
 
+	rule createRepeating {
+		select when begin repeating
+		pre {
+			do_main = "do_main";
+			recurring = event:attr("recurring");
+			c = ent:count;
+		}
+		{
+			send_directive("night_fire scheduled")
+				with count = c
+				and frequency = recurring;
+		}
+		fired {
+			schedule do_main event night_fire repeat recurring;
+		}
+	}
+
+	rule createSingle {
+		select when begin single
+		pre {
+			do_main = "do_main";
+			time = event:attr("time").defaultsTo(time:add(time:now(),{"seconds":60}), standardError("No time was given"));
+			c = ent:count;
+		}
+		{
+			send_directive("night_fire scheduled")
+				with count = c
+				and clock = time;
+		}
+		fired {
+			schedule do_main event night_fire at time;
+		}
+	}
+
 	rule cancelSchedule {
 		select when cancel scheduling
 		pre {
