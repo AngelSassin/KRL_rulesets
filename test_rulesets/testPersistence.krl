@@ -12,4 +12,18 @@ ruleset testPersistence {
 			ent:count;
 		}
 	}
+
+	rule count {
+		select when do_main night_fire
+		pre {
+			c = ent:count + 1;
+		}
+		{
+			send_directive("night_fire detected")
+				with count = c;
+		}
+		fired {
+			set ent:count c;
+		}
+	}
 }
