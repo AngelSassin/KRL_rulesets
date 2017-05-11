@@ -1,12 +1,4 @@
 ruleset randomTests {
-  meta {
-    shares __testing
-  }
-
-  global {
-    
-  }
-
   rule hello_monkey {
     select when echo monkey
     pre {
